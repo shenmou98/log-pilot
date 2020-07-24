@@ -3,6 +3,11 @@
   enabled: true
   paths:
       - {{ .HostDir }}/{{ .File }}
+  multiline.pattern: '^\s*(\d{4}|\d{2})\-(\d{2}|[a-zA-Z]{3})\-(\d{2}|\d{4})'
+  multiline.negate: true
+  multiline.match: after
+  multiline.max_lines: 10000
+  multiline.timeout: 15s
   scan_frequency: 10s
   fields_under_root: true
   {{if .Stdout}}
@@ -30,5 +35,5 @@
   close_removed: true
   clean_removed: true
   close_renamed: false
-
+ 
 {{end}}
